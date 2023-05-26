@@ -1,0 +1,22 @@
+{
+  "name": "transaction-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/charmingruby/transaction-api.git",
+  "author": "charmingruby <mrrubycanal3105@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsx src/server.ts",
+    "lint": "eslint src --ext .ts --fix"
+  },
+  "devDependencies": {
+    "@rocketseat/eslint-config": "^1.2.0",
+    "@types/node": "^20.2.4",
+    "eslint": "^8.41.0",
+    "tsx": "^3.12.7",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "fastify": "^4.17.0"
+  }
+}
