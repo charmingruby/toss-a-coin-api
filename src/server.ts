@@ -1,16 +1,25 @@
-import fastify, { FastifyReply, FastifyRequest } from 'fastify'
+import fastify, { FastifyRequest } from 'fastify'
+import cookie from '@fastify/cookie'
+import { env } from './env'
+import { transactionsRoutes } from './routes/transactions'
 
 const app = fastify()
 
-app.get('/hello', (req: FastifyRequest, rep: FastifyReply) => {
-  return 'hello world'
+app.register(cookie)
+
+app.addHook('preHandler', async (req: FastifyRequest) => {
+  console.log(`[${req.method}] [${req.url}]`)
+})
+
+app.register(transactionsRoutes, {
+  prefix: 'transactions',
 })
 
 app
   .listen({
-    port: 3333,
+    port: env.PORT,
     host: '0.0.0.0',
   })
   .then(() => {
-    console.log('📦 Server is listening on http://localhost:3333')
+    console.log(`📦 Server is listening on http://localhost:${env.PORT}`)
   })
